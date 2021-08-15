@@ -17,6 +17,7 @@ import Footer from "./Components/Common/Footer";
 
 function App() {
   const [mode, setMode] = React.useState("light");
+  console.log(process.env.REACT_APP_TEXT);
 
   const theme = createTheme({
     palette: {
