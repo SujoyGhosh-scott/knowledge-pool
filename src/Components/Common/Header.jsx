@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function Header({ changeMode }) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -189,7 +189,7 @@ export default function Header() {
             text="Satellite Imagery"
           />
           <CustomListItem image={news} path="/tech-news" text="Tech News" />
-          <ListItem button>
+          <ListItem button onClick={() => changeMode()}>
             <ListItemIcon>
               <Brightness4Icon style={{ color: "orange" }} />
             </ListItemIcon>
