@@ -11,9 +11,10 @@ const useStyles = makeStyles((theme) => ({
   card: {
     backgroundPosition: "center",
     backgroundSize: "100%",
-    borderRadius: 5,
+    borderRadius: 10,
     boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2)",
-    minHeight: 150,
+    minHeight: 160,
+    cursor: "pointer",
   },
 }));
 
@@ -38,7 +39,15 @@ const CustomCard = ({
       style={{ backgroundImage: `url(${image})` }}
       onClick={() => handleClick()}
     >
-      <Typography variant="h6">Hello test text</Typography>
+      <CardHeader title={header} style={{ color: headerColor }} />
+      <CardContent>
+        <Typography
+          variant="subtitle1"
+          style={{ color: contentColor, marginTop: "-.5rem" }}
+        >
+          {content}
+        </Typography>
+      </CardContent>
     </Card>
   );
 };
