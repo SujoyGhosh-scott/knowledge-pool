@@ -24,12 +24,12 @@ export default function Home() {
             website anytime soon! 😄
           </Typography>
           <br />
-          <Typography variant="h6">
+          <Typography variant="subtitle1">
             cause we have a ton of stuff like images taken by mars rovers,
             satellite imagery, astronomy pictures and a lot of other things to
             draw your attention!
           </Typography>
-          <Typography variant="h6">
+          <Typography variant="subtitle1">
             checkout the cards below for more info...
           </Typography>
         </Grid>

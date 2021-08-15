@@ -3,7 +3,6 @@ import axios from "axios";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -88,7 +87,7 @@ export default function AstronomyPictures() {
                 </Typography>
                 <Accordion style={{ border: "none" }}>
                   <AccordionSummary
-                    style={{ textAlign: "left" }}
+                    style={{ marginLeft: "-1rem" }}
                     expandIcon={<ExpandMoreIcon color="primary" />}
                   >
                     <CardHeader title={picture.title} />
@@ -108,6 +107,7 @@ export default function AstronomyPictures() {
           size="small"
           fullWidth
           style={{ marginTop: "1rem" }}
+          disabled={pictures.length === 0 ? true : false}
         >
           more
         </Button>
