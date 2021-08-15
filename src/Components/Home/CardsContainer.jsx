@@ -7,9 +7,9 @@ import { cards } from "./cards";
 
 const CardsContainer = () => {
   return (
-    <Grid item container wrap sm={10} xs={false}>
+    <Grid item container sm={10} xs={false}>
       {cards.map((card) => (
-        <Grid item sm={6} xs={12} style={{ padding: "1rem" }}>
+        <Grid item sm={6} xs={12} style={{ padding: "1rem" }} key={card.header}>
           <CustomCard
             image={card.image}
             path={card.path}

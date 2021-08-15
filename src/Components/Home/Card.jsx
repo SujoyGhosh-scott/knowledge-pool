@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   card: {
     backgroundPosition: "center",
     backgroundSize: "100%",
