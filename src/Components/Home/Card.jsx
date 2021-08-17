@@ -16,6 +16,9 @@ const useStyles = makeStyles(() => ({
     minHeight: 160,
     cursor: "pointer",
   },
+  content: {
+    marginTop: "-.5rem",
+  },
 }));
 
 const CustomCard = ({
@@ -43,7 +46,8 @@ const CustomCard = ({
       <CardContent>
         <Typography
           variant="subtitle1"
-          style={{ color: contentColor, marginTop: "-.5rem" }}
+          className={classes.content}
+          style={{ color: contentColor }}
         >
           {content}
         </Typography>
