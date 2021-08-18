@@ -12,7 +12,6 @@ const useStyles = makeStyles(() => ({
   input: {
     marginRight: "1rem",
     width: "120px",
-    marginBottom: 5,
   },
   dateInp: {
     marginRight: "1rem",
@@ -44,34 +43,47 @@ export default function SatelliteImagery() {
   const [error, setError] = useState({ error: false, message: "" });
   const classes = useStyles();
 
-  /*
+  const showError = () => {
+    setError({
+      error: true,
+      message:
+        "Sorry, Cannot load image. Please give proper latitude and longitude.",
+    });
+  };
+
   const getImage = () => {
-    //https://api.nasa.gov/planetary/earth/assets?lon=-95.33&lat=29.78&date=2018-01-01&&dim=0.10&api_key=DEMO_KEY
     axios
       .get(
-        `https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&&dim=0.15&api_key=DEMO_KEY`
+        `https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=${date}&dim=0.12&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
       )
       .then((res) => {
-        console.log("date: ", res.data);
+        //console.log("data: ", res.data);
         if (res.data.msg) {
-          console.log("error occurred");
-          //set error message
+          showError();
+          setData({});
           return;
         }
-        //setData
+        setData(res.data);
       })
-      .catch((err) => console.log(err.message));
-  };*/
+      .catch((err) => {
+        console.log("error: ", err.message);
+        showError();
+        setData({});
+      });
+  };
 
   const handleSearch = () => {
     if (lat > 90 || lat < -90) {
       //show error alert
       setLat(null);
+      return;
     }
     if (long > 180 || long < -180) {
       //show error alert
       setLong(null);
+      return;
     }
+    getImage();
   };
 
   useEffect(() => {
@@ -80,14 +92,9 @@ export default function SatelliteImagery() {
         `https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=2020-01-12&dim=0.12&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
       )
       .then((res) => {
-        console.log("data: ", res.data);
+        //console.log("data: ", res.data);
         if (res.data.msg) {
-          //setting error
-          setError({
-            error: true,
-            message:
-              "Sorry, Cannot load image. Please give proper latitude and longitude.",
-          });
+          showError();
           setData({});
           return;
         }
@@ -95,11 +102,7 @@ export default function SatelliteImagery() {
       })
       .catch((err) => {
         console.log("error: ", err.message);
-        setError({
-          error: true,
-          message:
-            "Sorry, Cannot load image. Please give proper latitude and longitude.",
-        });
+        showError();
         setData({});
       });
   }, []);
@@ -121,11 +124,25 @@ export default function SatelliteImagery() {
               {error.message}
             </Typography>
           ) : data ? (
-            <img
-              src={data.url}
-              style={{ width: "100%", objectFit: "contain", borderRadius: 10 }}
-              alt=""
-            />
+            <>
+              <a href={data.url} target="_blank">
+                <img
+                  src={data.url}
+                  style={{
+                    width: "100%",
+                    objectFit: "contain",
+                    borderRadius: 10,
+                  }}
+                  alt=""
+                />
+              </a>
+              <Typography variant="caption" color="textSecondary">
+                {data.resource.dataset}
+                <br />
+                taken on {Date(data.date)}. click to see image in high
+                resolution.
+              </Typography>
+            </>
           ) : (
             <CircularProgress />
           )}

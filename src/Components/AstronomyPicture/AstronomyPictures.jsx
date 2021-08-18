@@ -48,7 +48,7 @@ export default function AstronomyPictures() {
         `https://api.nasa.gov/planetary/apod?api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B&start_date=${start_date}`
       )
       .then((res) => {
-        console.log("got images: ", res.data);
+        //console.log("got images: ", res.data);
         setPictures(res.data.reverse());
       })
       .catch((err) => console.log("got error: ", err.message));
