@@ -116,8 +116,12 @@ export default function SatelliteImagery() {
         </Typography>
         <Typography variant="subtitle1">
           See high-quality, multi-spectral imagery of the surface of the Earth.
-          Below we have given a landsat image of Kolkata, India.
         </Typography>
+        {lat === 22.5726 && long === 88.3639 && (
+          <Typography variant="subtitle1">
+            Below we have given a landsat image of Kolkata, India.
+          </Typography>
+        )}
         <Grid style={{ margin: "1rem 0" }}>
           {error.error ? (
             <Typography variant="body1" color="textSecondary">
