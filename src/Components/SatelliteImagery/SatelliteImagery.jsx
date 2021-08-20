@@ -129,7 +129,7 @@ export default function SatelliteImagery() {
             </Typography>
           ) : data ? (
             <>
-              <a href={data.url} target="_blank">
+              <a href={data.url} target="_blank" rel="noreferrer">
                 <img
                   src={data.url}
                   style={{
