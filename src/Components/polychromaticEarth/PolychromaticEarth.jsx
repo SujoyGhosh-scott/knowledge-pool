@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
   },
   slider: {
     whiteSpace: "nowrap",
-    //transition: "ease 800ms",
+    transition: "fade-out",
   },
   image: {
     width: "100%",
@@ -26,8 +26,8 @@ const useStyles = makeStyles(() => ({
     marginBottom: "2rem",
   },
   dot: {
-    height: 10,
-    width: 10,
+    height: 8,
+    width: 8,
     borderRadius: "50%",
     cursor: "pointer",
     background: "#c4c4c4",
@@ -137,6 +137,10 @@ export default function PolychromaticEarth() {
               ></div>
             ))}
         </Grid>
+        <Typography variant="subtitle1" style={{ marginBottom: "2rem" }}>
+          Extremely sorry for longer loading time. All the images shown here are
+          high resolution and for research purpose.
+        </Typography>
       </Grid>
       <Grid item sm={1} xs={false}></Grid>
     </Grid>

@@ -8,6 +8,11 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+const showDate = (date) => {
+  const d = new Date(date)
+  return d
+}
+
 const useStyles = makeStyles(() => ({
   input: {
     marginRight: "1rem",
@@ -143,7 +148,7 @@ export default function SatelliteImagery() {
               <Typography variant="caption" color="textSecondary">
                 {data.resource.dataset}
                 <br />
-                taken on {Date(data.date)}. click to see image in high
+                taken on {showDate(data.date)}. click to see image in high
                 resolution.
               </Typography>
             </>
