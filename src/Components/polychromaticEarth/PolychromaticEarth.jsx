@@ -119,7 +119,7 @@ export default function PolychromaticEarth() {
                 const date = image.identifier.substring(6, 8);
                 return (
                   <img
-                    src={`https://api.nasa.gov/EPIC/archive/natural/${year}/${month}/${date}/png/${image.image}.png?api_key=DEMO_KEY`}
+                    src={`https://api.nasa.gov/EPIC/archive/natural/${year}/${month}/${date}/png/${image.image}.png?api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`}
                     className={classes.image}
                     alt=""
                     key={image.identifier}
