@@ -38,7 +38,7 @@ function App() {
       <Paper style={{ borderRadius: 0 }}>
         <Router>
           <Header changeMode={changeMode} />
-          <div style={{ marginLeft: "4.5rem", marginTop: "3.8rem" }}>
+          <div style={{ marginLeft: "4.5rem", marginTop: "4rem" }}>
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/astronomy-picture" component={AstronomyPictures} />
