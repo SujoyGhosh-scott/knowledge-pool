@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 import { roverInfo } from "./data";
 import RoverInfo from "./RoverInfo";
 import MarsGallery from "./MarsGallery";
@@ -7,12 +7,12 @@ import MarsGallery from "./MarsGallery";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import CircularProgress from "@material-ui/core/CircularProgress";
+//import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(() => ({}));
 
 export default function MarsImages() {
-  const [rover, setRover] = useState("spirit");
+  const [rover, setRover] = useState("curiosity");
   //const classes = useStyles();
 
   return (
@@ -28,11 +28,16 @@ export default function MarsImages() {
           all three rovers and even see images taken by specific camera using
           the given filter below.
         </Typography>
-        <Grid style={{ marginTop: "1rem" }}>
-          <RoverInfo data={roverInfo[rover]} />
+        <Grid style={{ margin: "10px 0" }}>
+          <RoverInfo
+            data={roverInfo[rover]}
+            rover={rover}
+            setRover={setRover}
+          />
         </Grid>
         <Typography variant="subtitle1">
-          Below are some images taken by {rover} of the surface of Mars.
+          Below are some images taken by <strong>{rover}</strong> of the surface
+          of Mars.
         </Typography>
         <MarsGallery />
       </Grid>
