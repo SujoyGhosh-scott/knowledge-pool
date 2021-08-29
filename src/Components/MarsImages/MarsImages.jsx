@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 //import axios from "axios";
-import { roverInfo } from "./data";
-import RoverInfo from "./RoverInfo";
-import MarsGallery from "./MarsGallery";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 //import CircularProgress from "@material-ui/core/CircularProgress";
 
+import { roverInfo } from "./data";
+import RoverInfo from "./RoverInfo";
+import MarsGallery from "./MarsGallery";
+import SensorFilter from "./SensorFilter";
+
 const useStyles = makeStyles(() => ({}));
 
 export default function MarsImages() {
   const [rover, setRover] = useState("curiosity");
+  const [selectedCamera, setSelectedCamera] = useState("");
   //const classes = useStyles();
 
   return (
@@ -39,6 +42,12 @@ export default function MarsImages() {
           Below are some images taken by <strong>{rover}</strong> of the surface
           of Mars.
         </Typography>
+        <SensorFilter
+          cameras={roverInfo[rover].camera}
+          camName={roverInfo[rover].cameraName}
+          selectedCamera={selectedCamera}
+          setSelectedCamera={setSelectedCamera}
+        />
         <MarsGallery />
       </Grid>
       <Grid item sm={1} xs={false}></Grid>

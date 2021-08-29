@@ -7,6 +7,8 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles(() => ({
   image: {
@@ -26,12 +28,14 @@ const RoverInfo = ({ data, rover, setRover }) => {
       <Grid container direction="column" item sm={8} xs={8}>
         <Typography variant="h4" color="primary" gutterBottom>
           {data.name}{" "}
-          <FiberManualRecordIcon
-            fontSize="small"
-            style={{
-              color: data.status === "complete" ? "#32a9d9" : "#35d45f",
-            }}
-          />
+          <Tooltip title={`status: ${data.status}`}>
+            <FiberManualRecordIcon
+              fontSize="small"
+              style={{
+                color: data.status === "complete" ? "#32a9d9" : "#35d45f",
+              }}
+            />
+          </Tooltip>
         </Typography>
         <Typography variant="subtitle1">
           <strong style={{ color: "gray" }}>Launch Date:</strong>{" "}
@@ -56,6 +60,7 @@ const RoverInfo = ({ data, rover, setRover }) => {
             <MenuItem value="spirit">spirit</MenuItem>
             <MenuItem value="oppertunity">oppertunity</MenuItem>
           </Select>
+          <FormHelperText>select rover</FormHelperText>
         </FormControl>
         <Grid style={{ flex: 1, display: "flex", justifyContent: "center" }}>
           <img src={data.image} className={classes.image} alt="" />
