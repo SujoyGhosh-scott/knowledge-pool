@@ -29,11 +29,7 @@ function MarsGallery({ data }) {
             href={`${photo.img_src}`}
             target="_blank"
           >
-            <img
-              src={photo.img_src}
-              style={{ width: "100%", objectFit: "contain" }}
-              alt=""
-            />
+            <img src={photo.img_src} alt="" />
             <ImageListItemBar
               style={{ background: "none" }}
               title={<strong>{photo.camera.full_name}</strong>}
