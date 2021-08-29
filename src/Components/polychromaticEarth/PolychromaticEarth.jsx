@@ -123,6 +123,7 @@ export default function PolychromaticEarth() {
                     className={classes.image}
                     alt=""
                     key={image.identifier}
+                    loading="eager"
                   />
                 );
               })}

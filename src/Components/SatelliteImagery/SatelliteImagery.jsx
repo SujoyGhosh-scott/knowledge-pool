@@ -137,6 +137,7 @@ export default function SatelliteImagery() {
                     objectFit: "contain",
                     borderRadius: 10,
                   }}
+                  loading="lazy"
                   alt=""
                 />
               </a>

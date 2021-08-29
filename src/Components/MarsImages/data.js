@@ -18,6 +18,8 @@ export const roverInfo = {
       "Navigation Camera",
     ],
     launchVechicle: "Atlas V-451",
+    maxSol: 3220,
+    maxDate: "2021-08-27",
   },
   spirit: {
     name: "spirit",
@@ -36,6 +38,8 @@ export const roverInfo = {
       "Miniature Thermal Emission Spectrometer(Mini-TES)",
     ],
     launchVechicle: "Delta II 7925H-9.5",
+    maxSol: 2208,
+    maxDate: "2010-03-21",
   },
   opportunity: {
     name: "opportunity",
@@ -54,5 +58,7 @@ export const roverInfo = {
       "Miniature Thermal Emission Spectrometer(Mini-TES)",
     ],
     launchVechicle: "Delta II 7925H-9.5",
+    maxSol: 5111,
+    maxDate: "2018-06-11",
   },
 };

@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-//import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { roverInfo } from "./data";
 import RoverInfo from "./RoverInfo";
 import MarsGallery from "./MarsGallery";
 import SensorFilter from "./SensorFilter";
-import { CircularProgress } from "@material-ui/core";
-
-const useStyles = makeStyles(() => ({}));
 
 export default function MarsImages() {
+  const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [rover, setRover] = useState("curiosity");
   const [selectedCamera, setSelectedCamera] = useState("");
-  //const classes = useStyles();
+  const [sol, setSol] = useState(1);
 
   const getImages = () => {
     axios
       .get(
-        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=200&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
       )
       .then((res) => {
         console.log("mars data: ", res.data.photos);
@@ -31,6 +28,31 @@ export default function MarsImages() {
       })
       .catch((err) => console.log("error: ", err.message));
   };
+
+  const getMoreImages = (sol, page) => {
+    axios
+      .get(
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+      )
+      .then((res) => {
+        console.log("more mars data: ", res.data.photos);
+        if (res.data.photos.length === 0) {
+          //if there are no more photos in this sol
+          //so we make go to the next sol, fetch the first page
+          getMoreImages(sol + 1, 1);
+          console.log("calling again");
+        } else {
+          //otherwise we append the returned data in the end and increase page no.
+          setData(data.concat(res.data.photos));
+          setSol(res.data.photos[0].sol);
+          let pageSetter = page;
+          if (page !== 1) page++;
+          setPage(pageSetter);
+        }
+      });
+  };
+
+  const filterImages = () => {};
 
   useEffect(() => {
     getImages();
@@ -71,7 +93,12 @@ export default function MarsImages() {
             <CircularProgress />
           </Grid>
         ) : (
-          <MarsGallery data={data} />
+          <MarsGallery
+            data={data}
+            page={page}
+            getMoreImages={getMoreImages}
+            sol={sol}
+          />
         )}
       </Grid>
       <Grid item sm={1} xs={false}></Grid>
