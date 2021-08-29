@@ -37,8 +37,8 @@ export const roverInfo = {
     ],
     launchVechicle: "Delta II 7925H-9.5",
   },
-  oppertunity: {
-    name: "oppertunity",
+  opportunity: {
+    name: "opportunity",
     info: "",
     launchDate: "2003-07-07",
     image:

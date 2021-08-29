@@ -7,7 +7,6 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles(() => ({
@@ -58,9 +57,8 @@ const RoverInfo = ({ data, rover, setRover }) => {
           <Select value={rover} onChange={(e) => setRover(e.target.value)}>
             <MenuItem value="curiosity">curiosity</MenuItem>
             <MenuItem value="spirit">spirit</MenuItem>
-            <MenuItem value="oppertunity">oppertunity</MenuItem>
+            <MenuItem value="opportunity">opportunity</MenuItem>
           </Select>
-          <FormHelperText>select rover</FormHelperText>
         </FormControl>
         <Grid style={{ flex: 1, display: "flex", justifyContent: "center" }}>
           <img src={data.image} className={classes.image} alt="" />
