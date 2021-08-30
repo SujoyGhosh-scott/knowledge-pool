@@ -110,6 +110,18 @@ export default function Header({ changeMode }) {
     history.push(path);
   };
 
+  const wish = () => {
+    const date = new Date();
+    const h = date.getHours();
+    if (h > 5 && h < 12) {
+      return " Good morning!";
+    } else if (h >= 12 && h < 17) {
+      return " Good afternoon!";
+    } else if (h >= 17 && h < 22) {
+      return " Good evening!";
+    } else return " Good night!";
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -151,6 +163,9 @@ export default function Header({ changeMode }) {
         }}
       >
         <div className={classes.toolbar}>
+          <Typography color="primary" style={{ marginRight: "auto" }}>
+            Hey, {wish()}
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />

@@ -13,7 +13,7 @@ import SensorFilter from "./SensorFilter";
 export default function MarsImages() {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
-  const [rover, setRover] = useState("curiosity");
+  const [rover, setRover] = useState("spirit");
   const [selectedCamera, setSelectedCamera] = useState("");
   const [sol, setSol] = useState(1);
 
@@ -52,7 +52,34 @@ export default function MarsImages() {
       });
   };
 
-  const filterImages = () => {};
+  const filterImages = () => {
+    if (selectedCamera === "") return;
+    axios
+      .get(
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${1}&camera=${selectedCamera}&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+      )
+      .then((res) => {
+        console.log("searched data: ", res.data.photos);
+        setData(res.data.photos);
+      })
+      .catch((err) => console.log("error: ", err.message));
+  };
+
+  const refreshList = () => {
+    console.log("hello form refreshlist");
+    setPage(1);
+    setSol(1);
+    setSelectedCamera("");
+    axios
+      .get(
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${1}&page=${1}&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+      )
+      .then((res) => {
+        console.log("refresh data: ", res.data.photos);
+        setData(res.data.photos);
+      })
+      .catch((err) => console.log("error: ", err.message));
+  };
 
   useEffect(() => {
     getImages();
@@ -87,19 +114,15 @@ export default function MarsImages() {
           camName={roverInfo[rover].cameraName}
           selectedCamera={selectedCamera}
           setSelectedCamera={setSelectedCamera}
+          filterImages={filterImages}
+          refreshList={refreshList}
         />
-        {data.length === 0 ? (
-          <Grid container justifyContent="center">
-            <CircularProgress />
-          </Grid>
-        ) : (
-          <MarsGallery
-            data={data}
-            page={page}
-            getMoreImages={getMoreImages}
-            sol={sol}
-          />
-        )}
+        <MarsGallery
+          data={data}
+          page={page}
+          getMoreImages={getMoreImages}
+          sol={sol}
+        />
       </Grid>
       <Grid item sm={1} xs={false}></Grid>
     </Grid>

@@ -9,7 +9,14 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 
-function SensorFilter({ cameras, camName, selectedCamera, setSelectedCamera }) {
+function SensorFilter({
+  cameras,
+  camName,
+  selectedCamera,
+  setSelectedCamera,
+  refreshList,
+  filterImages,
+}) {
   return (
     <Grid container justifyContent="flex-end">
       <FormControl size="small" variant="outlined">
@@ -28,12 +35,16 @@ function SensorFilter({ cameras, camName, selectedCamera, setSelectedCamera }) {
         </Select>
       </FormControl>
       <Tooltip title="search">
-        <IconButton color="primary" style={{ marginLeft: 10 }}>
+        <IconButton
+          color="primary"
+          style={{ marginLeft: 10 }}
+          onClick={filterImages}
+        >
           <SearchRoundedIcon fontSize="small" />
         </IconButton>
       </Tooltip>
       <Tooltip title="refresh images">
-        <IconButton color="primary">
+        <IconButton color="primary" onClick={refreshList}>
           <RefreshIcon fontSize="small" />
         </IconButton>
       </Tooltip>

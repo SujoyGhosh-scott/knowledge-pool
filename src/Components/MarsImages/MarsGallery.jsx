@@ -18,7 +18,9 @@ function MarsGallery({ data, page, getMoreImages, sol }) {
   if (data.length === 0)
     return (
       <Grid>
-        <Typography>No photos found</Typography>
+        <Typography>
+          No photos found. Please use refresh button to get back to the gallery.
+        </Typography>
       </Grid>
     );
 
