@@ -54,7 +54,7 @@ export default function SatelliteImagery() {
   const getImage = () => {
     axios
       .get(
-        `https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=${date}&dim=0.12&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+        `https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=${date}&dim=0.12&api_key=${process.env.REACT_APP_NASA_API_KEY}`
       )
       .then((res) => {
         //console.log("data: ", res.data);
@@ -89,7 +89,7 @@ export default function SatelliteImagery() {
   useEffect(() => {
     axios
       .get(
-        `https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=2020-01-12&dim=0.12&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+        `https://api.nasa.gov/planetary/earth/assets?lon=${long}&lat=${lat}&date=2020-01-12&dim=0.12&api_key=${process.env.REACT_APP_NASA_API_KEY}`
       )
       .then((res) => {
         //console.log("data: ", res.data);

@@ -20,7 +20,7 @@ export default function MarsImages() {
   const getImages = () => {
     axios
       .get(
-        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=${process.env.REACT_APP_NASA_API_KEY}`
       )
       .then((res) => {
         console.log("mars data: ", res.data.photos);
@@ -32,7 +32,7 @@ export default function MarsImages() {
   const getMoreImages = (sol, page) => {
     axios
       .get(
-        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=${process.env.REACT_APP_NASA_API_KEY}`
       )
       .then((res) => {
         console.log("more mars data: ", res.data.photos);
@@ -56,7 +56,9 @@ export default function MarsImages() {
     if (selectedCamera === "") return;
     axios
       .get(
-        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${1}&camera=${selectedCamera}&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${1}&camera=${selectedCamera}&api_key=${
+          process.env.REACT_APP_NASA_API_KEY
+        }`
       )
       .then((res) => {
         console.log("searched data: ", res.data.photos);
@@ -72,7 +74,9 @@ export default function MarsImages() {
     setSelectedCamera("");
     axios
       .get(
-        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${1}&page=${1}&api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${1}&page=${1}&api_key=${
+          process.env.REACT_APP_NASA_API_KEY
+        }`
       )
       .then((res) => {
         console.log("refresh data: ", res.data.photos);

@@ -45,7 +45,7 @@ export default function AstronomyPictures() {
   const getImages = (start_date) => {
     axios
       .get(
-        `https://api.nasa.gov/planetary/apod?api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B&start_date=${start_date}`
+        `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&start_date=${start_date}`
       )
       .then((res) => {
         //console.log("got images: ", res.data);

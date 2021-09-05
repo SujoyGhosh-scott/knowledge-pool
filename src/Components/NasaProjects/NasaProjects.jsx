@@ -15,7 +15,7 @@ export default function NasaProjects({ setProject }) {
   const getProjectIds = () => {
     axios
       .get(
-        "https://api.nasa.gov/techport/api/projects?api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B"
+        `https://api.nasa.gov/techport/api/projects?api_key=${process.env.REACT_APP_NASA_API_KEY}`
       )
       .then((res) => {
         //console.log("data: ", res.data.projects);
@@ -39,7 +39,7 @@ export default function NasaProjects({ setProject }) {
     for (let i = 0; i < 15; i++) {
       projectIdList[
         i
-      ] = `https://api.nasa.gov/techport/api/projects/${projectIdList[i]}?api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`;
+      ] = `https://api.nasa.gov/techport/api/projects/${projectIdList[i]}?api_key=${process.env.REACT_APP_NASA_API_KEY}`;
     }
     //console.log("project id list: ", projectIdList);
 

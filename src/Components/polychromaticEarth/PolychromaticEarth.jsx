@@ -55,7 +55,7 @@ export default function PolychromaticEarth() {
   useEffect(() => {
     axios
       .get(
-        "https://api.nasa.gov/EPIC/api/natural?api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B"
+        `https://api.nasa.gov/EPIC/api/natural?api_key=${process.env.REACT_APP_NASA_API_KEY}`
       )
       .then((res) => {
         //console.log("res: ", res.data);
@@ -119,7 +119,7 @@ export default function PolychromaticEarth() {
                 const date = image.identifier.substring(6, 8);
                 return (
                   <img
-                    src={`https://api.nasa.gov/EPIC/archive/natural/${year}/${month}/${date}/png/${image.image}.png?api_key=1hfhPJW0UurCQ3OQGwoHWFCzGawcE9k8lbJDos0B`}
+                    src={`https://api.nasa.gov/EPIC/archive/natural/${year}/${month}/${date}/png/${image.image}.png?api_key=${process.env.REACT_APP_NASA_API_KEY}`}
                     className={classes.image}
                     alt=""
                     key={image.identifier}
