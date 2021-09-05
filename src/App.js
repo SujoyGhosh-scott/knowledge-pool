@@ -19,7 +19,7 @@ import Project from "./Components/NasaProjects/Project";
 function App() {
   const [mode, setMode] = React.useState("light");
   const [project, setProject] = React.useState({});
-  console.log(process.env.REACT_APP_TEXT);
+  //console.log(process.env.REACT_APP_TEXT);
 
   const theme = createTheme({
     palette: {

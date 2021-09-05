@@ -3,7 +3,6 @@ import axios from "axios";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { roverInfo } from "./data";
 import RoverInfo from "./RoverInfo";
@@ -23,7 +22,7 @@ export default function MarsImages() {
         `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=${process.env.REACT_APP_NASA_API_KEY}`
       )
       .then((res) => {
-        console.log("mars data: ", res.data.photos);
+        //console.log("mars data: ", res.data.photos);
         setData(res.data.photos);
       })
       .catch((err) => console.log("error: ", err.message));
@@ -35,7 +34,7 @@ export default function MarsImages() {
         `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=${process.env.REACT_APP_NASA_API_KEY}`
       )
       .then((res) => {
-        console.log("more mars data: ", res.data.photos);
+        //console.log("more mars data: ", res.data.photos);
         if (res.data.photos.length === 0) {
           //if there are no more photos in this sol
           //so we make go to the next sol, fetch the first page
@@ -61,14 +60,13 @@ export default function MarsImages() {
         }`
       )
       .then((res) => {
-        console.log("searched data: ", res.data.photos);
+        //console.log("searched data: ", res.data.photos);
         setData(res.data.photos);
       })
       .catch((err) => console.log("error: ", err.message));
   };
 
   const refreshList = () => {
-    console.log("hello form refreshlist");
     setPage(1);
     setSol(1);
     setSelectedCamera("");
@@ -79,7 +77,7 @@ export default function MarsImages() {
         }`
       )
       .then((res) => {
-        console.log("refresh data: ", res.data.photos);
+        //console.log("refresh data: ", res.data.photos);
         setData(res.data.photos);
       })
       .catch((err) => console.log("error: ", err.message));

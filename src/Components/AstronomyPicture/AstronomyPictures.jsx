@@ -32,8 +32,8 @@ export default function AstronomyPictures() {
   const dateOfLastWeek = (date) => {
     const initialDate = date;
     const finalDate = new Date(initialDate.getTime() - 7 * 24 * 60 * 60 * 1000);
-    console.log("cd: ", initialDate);
-    console.log("fd: ", finalDate);
+    //console.log("cd: ", initialDate);
+    //console.log("fd: ", finalDate);
     return finalDate;
   };
 
@@ -63,7 +63,7 @@ export default function AstronomyPictures() {
       correctDigit(initialDate.getMonth() + 1) +
       "-" +
       correctDigit(initialDate.getDate());
-    console.log("start date: ", start_date);
+    //console.log("start date: ", start_date);
     getImages(start_date);
   };
 
@@ -76,7 +76,7 @@ export default function AstronomyPictures() {
       correctDigit(initialDate.getMonth() + 1) +
       "-" +
       correctDigit(initialDate.getDate());
-    console.log("start date: ", start_date);
+    //console.log("start date: ", start_date);
     getImages(start_date);
   }, []);
 

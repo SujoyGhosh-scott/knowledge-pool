@@ -2,7 +2,6 @@ import { Grid, Typography } from "@material-ui/core";
 import React from "react";
 
 const Project = ({ data }) => {
-  console.log("from project, data: ", data);
   return (
     <Grid container>
       <Grid item sm={1} xs={false}></Grid>

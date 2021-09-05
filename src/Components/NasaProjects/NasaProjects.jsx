@@ -23,7 +23,7 @@ export default function NasaProjects({ setProject }) {
         for (let i = 0; i < res.data.projects.length; i++) {
           filteredList.push(res.data.projects[i].projectId);
         }
-        console.log("filtered list: ", filteredList);
+        //console.log("filtered list: ", filteredList);
         setProjectIds(filteredList);
         makeRequestList(filteredList);
       })
@@ -33,7 +33,7 @@ export default function NasaProjects({ setProject }) {
   const makeRequestList = (list) => {
     //first we will get 15 project ids from the list of projects
     let projectIdList = list.slice(page * 15 - 15, page * 15);
-    console.log("project id list: ", projectIdList);
+    //console.log("project id list: ", projectIdList);
 
     //makeing the final url then storing it to
     for (let i = 0; i < 15; i++) {
@@ -49,7 +49,7 @@ export default function NasaProjects({ setProject }) {
       axios
         .get(projectIdList[i])
         .then((res) => {
-          console.log("#" + i + " response: ", res.data);
+          //console.log("#" + i + " response: ", res.data);
           projectDataList = [...projectDataList, res.data.project];
           setData(projectDataList);
         })

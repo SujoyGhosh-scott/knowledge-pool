@@ -20,8 +20,6 @@ const useStyles = makeStyles(() => ({
 const RoverInfo = ({ data, rover, setRover }) => {
   const classes = useStyles();
 
-  console.log("from rover info");
-
   return (
     <Grid container>
       <Grid container direction="column" item sm={8} xs={8}>
