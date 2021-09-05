@@ -4,8 +4,15 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
-const ProjectsContainer = ({ data }) => {
+const ProjectsContainer = ({ data, setProject }) => {
+  const history = useHistory();
+  const handleClick = (item) => {
+    setProject(item);
+    history.push(`/project/${item.projectId}`);
+  };
+
   return (
     <Grid container item style={{ margin: "10px 0" }}>
       {data.map((item) => (
@@ -49,6 +56,7 @@ const ProjectsContainer = ({ data }) => {
                   maxHeight: 120,
                   marginTop: 5,
                 }}
+                onClick={() => handleClick(item)}
               ></div>
             </CardContent>
           </Card>

@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ProjectsContainer from "./ProjectsContainer";
 
-const useStyles = makeStyles(() => ({}));
-
-export default function NasaProjects() {
+export default function NasaProjects({ setProject }) {
   const [projectIds, setProjectIds] = useState([]);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
-  const classes = useStyles();
 
   const getProjectIds = () => {
     axios
@@ -100,7 +96,9 @@ export default function NasaProjects() {
             <CircularProgress />
           </Grid>
         )}
-        {data.length > 0 && <ProjectsContainer data={data} />}
+        {data.length > 0 && (
+          <ProjectsContainer data={data} setProject={setProject} />
+        )}
         <Button
           color="primary"
           fullWidth

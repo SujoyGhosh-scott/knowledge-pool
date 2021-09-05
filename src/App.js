@@ -14,9 +14,11 @@ import SatelliteImagery from "./Components/SatelliteImagery/SatelliteImagery";
 import Default from "./Components/Default";
 import Header from "./Components/Common/Header";
 import Footer from "./Components/Common/Footer";
+import Project from "./Components/NasaProjects/Project";
 
 function App() {
   const [mode, setMode] = React.useState("light");
+  const [project, setProject] = React.useState({});
   console.log(process.env.REACT_APP_TEXT);
 
   const theme = createTheme({
@@ -49,7 +51,12 @@ function App() {
                 component={PolychromaticEarth}
               />
               <Route path="/tech-news" component={TechNews} />
-              <Route path="/nasa-projects" component={NasaProjects} />
+              <Route path="/nasa-projects">
+                <NasaProjects setProject={setProject} />
+              </Route>
+              <Route path="/project/:id">
+                <Project data={project} />
+              </Route>
               <Route component={Default} />
             </Switch>
           </div>
