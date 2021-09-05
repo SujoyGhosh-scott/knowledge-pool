@@ -4,7 +4,9 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Button } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import ProjectsContainer from "./ProjectsContainer";
 
 const useStyles = makeStyles(() => ({}));
 
@@ -93,8 +95,12 @@ export default function NasaProjects() {
             Below are details of the projects NASA's working on.
           </Typography>
         </Grid>
-        {data.length > 0 &&
-          data.map((item, i) => <div key={i}>{item.projectId}</div>)}
+        {data.length === 0 && (
+          <Grid container justifyContent="center">
+            <CircularProgress />
+          </Grid>
+        )}
+        {data.length > 0 && <ProjectsContainer data={data} />}
         <Button
           color="primary"
           fullWidth
